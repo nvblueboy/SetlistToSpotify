@@ -1,2 +1,5 @@
 #Ignore the config.ini file.
 config.ini
+
+#Ignore compiled Python bytecode.
+*.pyc
