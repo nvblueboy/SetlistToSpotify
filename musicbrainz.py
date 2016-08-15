@@ -1,7 +1,11 @@
 ## Use the Musicbrainz XML Service to get the MBID by the artist's name.
 ## If the artist is not in Musicbrainz, they cannot be on setlist.fm.
 
-import json, requests, configuration
+#Standard python imports
+import json, requests
+
+#Import local modules.
+import configuration
 
 def getid(name):
     ##Read the configuration file and get the email of the user.
@@ -15,6 +19,11 @@ def getid(name):
     text = r.text
     ##parse the JSON into a dictionary, get the top artist's id and name.
     json_file = json.loads(text)
-    artist_id = json_file["artists"][0]["id"]
-    artist_name = json_file["artists"][0]["name"]
+    try:
+        artist_id = json_file["artists"][0]["id"]
+        artist_name = json_file["artists"][0]["name"]
+    except:
+        print ("Artist could not be found. Request dump: ")
+        print(text)
+        return False
     return { 'name':artist_name, 'id':artist_id }
