@@ -1,3 +1,5 @@
+##Get the configuration files.
+
 import configparser, os
 
 
@@ -8,7 +10,9 @@ class Configuration():
             #If so, parse it.
             config = configparser.ConfigParser()
             config.read(filename)
+            self.email = config["musicbrainz"]["email"]
             self.setlistKey = config["setlist.fm"]["key"]
+            
             
             
         
