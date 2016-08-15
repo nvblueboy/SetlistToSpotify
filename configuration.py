@@ -12,6 +12,10 @@ class Configuration():
             config.read(filename)
             self.email = config["musicbrainz"]["email"]
             self.setlistKey = config["setlist.fm"]["key"]
+            self.clientid = config["spotify"]["client-id"]
+            self.clientsecret = config["spotify"]["client-secret"]
+            self.user = config["spotify"]["user"]
+            self.redirect = config["spotify"]["redirect"]
             
             
             
